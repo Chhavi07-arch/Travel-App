@@ -5,42 +5,214 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    margin: 0;
     min-height: 100vh;
-    padding: 2rem;
-    color: #2d3436;
+    background: linear-gradient(-45deg, #1a2a6c, #2a4858, #0083B0, #00B4DB);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px, 30px 30px;
+    background-position: 0 0, 25px 25px;
+    animation: twinkle 8s infinite;
+    opacity: 0.3;
+}
+
+body::after {
+    background: 
+        radial-gradient(2px 2px at 40px 60px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 20px 50px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 30px 100px, rgba(255,255,255,0.9), rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 60px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 110px 90px, rgba(255,255,255,0.7), rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 190px 150px, rgba(255,255,255,0.9), rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    opacity: 0.15;
+    animation: sparkle 10s alternate infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.4; }
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0.15;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.25;
+        transform: scale(1.02);
+    }
+    100% {
+        opacity: 0.15;
+        transform: scale(1);
+    }
+}
+
+/* Fixed star animations */
+.star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+}
+
+.star:nth-child(1) { top: 15%; left: 10%; animation: starSparkle1 4s infinite; }
+.star:nth-child(2) { top: 25%; left: 20%; animation: starSparkle2 3s infinite; }
+.star:nth-child(3) { top: 35%; left: 30%; animation: starSparkle3 5s infinite; }
+.star:nth-child(4) { top: 45%; left: 40%; animation: starSparkle4 4s infinite; }
+.star:nth-child(5) { top: 55%; left: 50%; animation: starSparkle5 3s infinite; }
+.star:nth-child(6) { top: 65%; left: 60%; animation: starSparkle1 5s infinite; }
+.star:nth-child(7) { top: 75%; left: 70%; animation: starSparkle2 4s infinite; }
+.star:nth-child(8) { top: 85%; left: 80%; animation: starSparkle3 3s infinite; }
+.star:nth-child(9) { top: 95%; left: 90%; animation: starSparkle4 5s infinite; }
+.star:nth-child(10) { top: 10%; left: 95%; animation: starSparkle5 4s infinite; }
+.star:nth-child(11) { top: 20%; left: 85%; animation: starSparkle1 3s infinite; }
+.star:nth-child(12) { top: 30%; left: 75%; animation: starSparkle2 5s infinite; }
+.star:nth-child(13) { top: 40%; left: 65%; animation: starSparkle3 4s infinite; }
+.star:nth-child(14) { top: 50%; left: 55%; animation: starSparkle4 3s infinite; }
+.star:nth-child(15) { top: 60%; left: 45%; animation: starSparkle5 5s infinite; }
+.star:nth-child(16) { top: 70%; left: 35%; animation: starSparkle1 4s infinite; }
+.star:nth-child(17) { top: 80%; left: 25%; animation: starSparkle2 3s infinite; }
+.star:nth-child(18) { top: 90%; left: 15%; animation: starSparkle3 5s infinite; }
+.star:nth-child(19) { top: 15%; left: 45%; animation: starSparkle4 4s infinite; }
+.star:nth-child(20) { top: 85%; left: 55%; animation: starSparkle5 3s infinite; }
+
+@keyframes starSparkle1 {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.5); opacity: 1; }
+}
+
+@keyframes starSparkle2 {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.5); opacity: 1; }
+}
+
+@keyframes starSparkle3 {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.5); opacity: 1; }
+}
+
+@keyframes starSparkle4 {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.5); opacity: 1; }
+}
+
+@keyframes starSparkle5 {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.5); opacity: 1; }
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 2rem;
 }
 
 header {
     text-align: center;
+    padding: 2rem 0;
     margin-bottom: 3rem;
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    color: #2d3436;
-    margin-bottom: 0.5rem;
+    font-size: 4.5rem;
+    margin: 0;
+    background: linear-gradient(to right, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        text-shadow: 2px 2px 15px rgba(255, 215, 0, 0.4);
+    }
+}
+
+header h1 i {
+    margin-right: 15px;
+    animation: globeSpin 10s linear infinite;
+}
+
+@keyframes globeSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .subtitle {
     font-size: 1.2rem;
-    color: #636e72;
+    color: #e0e0e0;
+    margin-top: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    animation: subtitleFade 3s ease-in-out infinite;
+}
+
+@keyframes subtitleFade {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
 }
 
 .preference-form {
-    background: white;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
     padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 0 auto;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: transform 0.3s ease;
+}
+
+.preference-form:hover {
+    transform: translateY(-5px);
 }
 
 .form-group {
@@ -51,7 +223,7 @@ label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
-    color: #2d3436;
+    color: white;
 }
 
 select {
@@ -67,6 +239,16 @@ select {
     background-size: 1em;
 }
 
+select, input[type="checkbox"] {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
 select:focus {
     outline: none;
     border-color: #74b9ff;
@@ -79,9 +261,15 @@ select:focus {
 }
 
 .checkbox-container {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    margin-right: 1rem;
     cursor: pointer;
+}
+
+.checkbox-text {
+    margin-left: 0.5rem;
+    color: white;
 }
 
 .checkbox-container input[type="checkbox"] {
@@ -89,26 +277,38 @@ select:focus {
 }
 
 .primary-btn, .secondary-btn, .shuffle-btn {
-    padding: 0.8rem 1.5rem;
+    padding: 12px 24px;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
+    border-radius: 25px;
+    font-weight: 600;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .primary-btn {
-    background: #0984e3;
-    color: white;
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    color: #000;
     width: 100%;
     margin-bottom: 1rem;
 }
 
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
 .secondary-btn {
-    background: #dfe6e9;
-    color: #2d3436;
-    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(5px);
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
 }
 
 .primary-btn:hover, .secondary-btn:hover, .shuffle-btn:hover {
@@ -122,13 +322,18 @@ select:focus {
 }
 
 .destination-card {
-    background: white;
-    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease;
-    max-width: 800px;
-    margin: 0 auto;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: all 0.3s ease;
+}
+
+.destination-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
 }
 
 .destination-image {
